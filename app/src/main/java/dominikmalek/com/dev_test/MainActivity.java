@@ -9,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private TaskDBHelper dbHelper;
     private TaskAdapter adapter;
     private String filter = "";
 
@@ -19,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //populate recyclerview
@@ -30,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateRecyclerView(String filter){
-        dbHelper = TaskDBHelper.getInstanse(this);
+        TaskDBHelper dbHelper = TaskDBHelper.getInstance(this);
         //dbHelper.addSomeFlats();
-        adapter = new TaskAdapter(dbHelper.taskList(filter),this,mRecyclerView);
+        adapter = new TaskAdapter(dbHelper.taskList(filter),this, filter);
         mRecyclerView.setAdapter(adapter);
 
     }
@@ -44,3 +42,4 @@ public class MainActivity extends AppCompatActivity {
         populateRecyclerView(filter);
     }
 }
+

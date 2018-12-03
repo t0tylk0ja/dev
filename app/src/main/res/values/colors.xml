@@ -6,4 +6,10 @@
 
     <color name="myWhite">#ffffff</color>
     <color name="myGray">#252525</color>
+    <color name="buttonK1">#47b39c</color>
+    <color name="buttonK1L">#c8e8e1</color>
+    <color name="buttonK2">#e76855</color>
+    <color name="buttonK2L">#f4d0cb</color>
+    <color name="buttonK3">#462445</color>
+    <color name="buttonK3L">#c8bdc7</color>
 </resources>
